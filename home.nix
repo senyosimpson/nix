@@ -41,13 +41,13 @@
     git
     gnome.gnome-tweaks
     helix
+    rustup
     vscode
     zellij
     zsh
   ];
 
   # ===== Alacritty =====
-
   programs.alacritty = {
     enable = true;
   #   settings = {
@@ -76,7 +76,6 @@
   };
 
   # ===== Atuin =====
-
   programs.atuin = {
     enable = true;
     settings = {
