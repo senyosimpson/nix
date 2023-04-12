@@ -33,6 +33,7 @@
     atuin
     bat
     curl
+    dconf
     dogdns
     git
     gnome.gnome-tweaks
@@ -79,6 +80,44 @@
     settings = {
       auto_sync = false;
       search_mode = "fuzzy";
+    };
+  };
+
+  # ===== Gnome Terminal =====
+  programs.gnome-terminal = {
+    enable = true;
+    profile = {
+      # Gruvbox Dark
+      ef772e3d-74c4-42be-9fce-c208c04b18b8 = {
+        default = true;
+        visibleName = "Gruvbox Dark";
+        showScrollbar = false;
+        transparencyPercent = 10;
+        colors = {
+          foregroundColor = "#EBDBB2";
+          backgroundColor = "#282828";
+          palette = [
+            # Colours 1 to 9
+            "#282828"    # Black (Host)
+            "#CC241D"    # Red (Syntax string)
+            "#98971A"    # Green (Command)
+            "#D79921"    # Yellow (Command second)
+            "#458588"    # Blue (Path)
+            "#B16286"    # Magenta (Syntax var)
+            "#689D6A"    # Cyan (Prompt)
+            "#A89984"    # White
+            # Colours 9 to 16
+            "#928374"    # Bright Black
+            "#FB4934"    # Bright Red (Command error)
+            "#B8BB26"    # Bright Green (Exec)
+            "#FABD2F"    # Bright Yellow
+            "#83A598"    # Bright Blue (Folder)
+            "#D3869B"    # Bright Magenta
+            "#8EC07C"    # Bright Cyan
+            "#EBDBB2"    # Bright White
+          ];
+        };
+      };
     };
   };
 
