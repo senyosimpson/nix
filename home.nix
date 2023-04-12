@@ -50,6 +50,8 @@
     zellij
     zoxide
     zsh
+  ] ++ [
+    flyctl
   ];
 
   # ===== Gnome Terminal =====
