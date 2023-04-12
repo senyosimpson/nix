@@ -44,6 +44,7 @@
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
     oh-my-zsh
     rustup
+    starship
     vim
     vscode
     zellij
@@ -99,6 +100,11 @@
       auto_sync = false;
       search_mode = "fuzzy";
     };
+  };
+
+  # ===== Starship =====
+  programs.starship = {
+    enable = true;
   };
 
   # ===== Zellij =====
