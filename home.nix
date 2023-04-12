@@ -25,6 +25,9 @@
   
   # Enable Home Manager to work better on non-NixOS Linux distros
   targets.genericLinux.enable = true;
+
+  # Enable Home Manager to configure fonts
+  fonts.fontconfig.enable = true;
   
   # Packages (in alphabetical order)
   home.packages = with pkgs; [
@@ -38,6 +41,7 @@
     git
     gnome.gnome-tweaks
     helix
+    (nerdfonts.override { fonts = [ "FiraCode" ]; })
     oh-my-zsh
     rustup
     vim
@@ -74,18 +78,10 @@
   #   };
   };
 
-  # ===== Atuin =====
-  programs.atuin = {
-    enable = true;
-    settings = {
-      auto_sync = false;
-      search_mode = "fuzzy";
-    };
-  };
-
   # ===== Gnome Terminal =====
   programs.gnome-terminal = {
     enable = true;
+    showMenubar = false;
     profile = {
       # Gruvbox Dark
       ef772e3d-74c4-42be-9fce-c208c04b18b8 = {
@@ -93,6 +89,9 @@
         visibleName = "Gruvbox Dark";
         showScrollbar = false;
         transparencyPercent = 10;
+        # font = "FiraCode Nerd Font, Light 9";
+        cursorBlinkMode = "off";
+        cursorShape = "ibeam";
         colors = {
           foregroundColor = "#EBDBB2";
           backgroundColor = "#282828";
@@ -118,6 +117,15 @@
           ];
         };
       };
+    };
+  };
+
+  # ===== Atuin =====
+  programs.atuin = {
+    enable = true;
+    settings = {
+      auto_sync = false;
+      search_mode = "fuzzy";
     };
   };
 
