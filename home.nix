@@ -48,6 +48,7 @@
     vim
     vscode
     zellij
+    zoxide
     zsh
   ];
 
@@ -107,6 +108,11 @@
     enable = true;
   };
 
+  # ===== Zoxide =====
+  programs.zoxide = {
+    enable = true;
+  };
+
   # ===== Zellij =====
   home.file."${config.xdg.configHome}/zellij/layouts/default.kdl".text = ''
     layout {
@@ -137,7 +143,7 @@
     };
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" ];
+      plugins = [ "git" "sudo" ];
     };
   };
 }
