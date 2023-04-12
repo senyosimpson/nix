@@ -40,6 +40,7 @@
     git
     gnome.gnome-tweaks
     helix
+    lsd
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
     oh-my-zsh
     rustup
@@ -124,6 +125,10 @@
   # ===== Zsh =====
   programs.zsh = {
     enable = true;
+    shellAliases = {
+      ls = "lsd";
+      cat = "bat";
+    };
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" ];
