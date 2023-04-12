@@ -36,6 +36,7 @@
     bat
     curl
     dconf
+    direnv
     dogdns
     git
     gnome.gnome-tweaks
@@ -47,6 +48,7 @@
     starship
     vim
     vscode
+    wireguard-tools
     zellij
     zoxide
     zsh
@@ -97,6 +99,12 @@
         };
       };
     };
+  };
+
+  # ===== Direnv =====
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   # ===== Atuin =====
