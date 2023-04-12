@@ -142,6 +142,7 @@
   # ===== Zsh =====
   programs.zsh = {
     enable = true;
+    enableAutosuggestions = true;
     shellAliases = {
       ls = "lsd";
       cat = "bat";
