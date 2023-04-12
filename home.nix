@@ -32,7 +32,6 @@
   # Packages (in alphabetical order)
   home.packages = with pkgs; [
     _1password-gui
-    alacritty
     atuin
     bat
     curl
@@ -49,34 +48,6 @@
     zellij
     zsh
   ];
-
-  # ===== Alacritty =====
-  programs.alacritty = {
-    enable = true;
-  #   settings = {
-  #     background_opacity = 0.9;
-  #     window = {
-  #       dimensions = {
-  #         columns = 80;
-  #         lines = 24;
-  #       };
-  #       decorations = none;
-  #       startup_mode = Windowed;
-  #     };
-  #     colors = {
-  #       primary = {
-  #         background = "#282828";
-  #         foreground = "#ebdbb2";
-  #       };
-  #       normal = {};
-  #       bright = {};
-  #     };
-  #     cursor = {
-  #       style = Beam;
-  #       unfocused_hollow = false;
-  #     };
-  #   };
-  };
 
   # ===== Gnome Terminal =====
   programs.gnome-terminal = {
