@@ -46,6 +46,7 @@
     oh-my-zsh
     rustup
     starship
+    tailscale
     vim
     vscode
     wireguard-tools
@@ -57,6 +58,7 @@
     go
     gopls
     go-tools
+    teleport
   ];
 
   # ===== Gnome Terminal =====
