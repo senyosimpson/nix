@@ -65,7 +65,7 @@
         visibleName = "Gruvbox Dark";
         showScrollbar = false;
         transparencyPercent = 10;
-        # font = "FiraCode Nerd Font, Light 9";
+        font = "FiraCode Nerd Font 9";
         cursorBlinkMode = "off";
         cursorShape = "ibeam";
         colors = {
