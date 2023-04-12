@@ -46,7 +46,6 @@
     oh-my-zsh
     rustup
     starship
-    tailscale
     vim
     vscode
     wireguard-tools
