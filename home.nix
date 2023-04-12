@@ -146,6 +146,7 @@
     shellAliases = {
       ls = "lsd";
       cat = "bat";
+      zj = "zellij";
     };
     oh-my-zsh = {
       enable = true;
