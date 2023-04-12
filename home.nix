@@ -25,9 +25,6 @@
   
   # Enable Home Manager to work better on non-NixOS Linux distros
   targets.genericLinux.enable = true;
-
-  # Allow home-manager to manage shell configuration
-  # programs.bash.enable = true;
   
   # Packages (in alphabetical order)
   home.packages = with pkgs; [
