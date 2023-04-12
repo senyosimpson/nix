@@ -52,6 +52,8 @@
     zsh
   ] ++ [
     flyctl
+    go
+    gopls
   ];
 
   # ===== Gnome Terminal =====
