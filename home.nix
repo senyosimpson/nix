@@ -25,10 +25,9 @@
   
   # Enable Home Manager to work better on non-NixOS Linux distros
   targets.genericLinux.enable = true;
-  
+
   # Allow home-manager to manage shell configuration
   # programs.bash.enable = true;
-  # programs.zsh.enable = true;
   
   # Packages (in alphabetical order)
   home.packages = with pkgs; [
@@ -41,7 +40,9 @@
     git
     gnome.gnome-tweaks
     helix
+    oh-my-zsh
     rustup
+    vim
     vscode
     zellij
     zsh
@@ -81,6 +82,36 @@
     settings = {
       auto_sync = false;
       search_mode = "fuzzy";
+    };
+  };
+
+  # ===== Zellij =====
+  home.file."${config.xdg.configHome}/zellij/layouts/default.kdl".text = ''
+    layout {
+      pane size=1 borderless=true {
+        plugin location="zellij:tab-bar"
+      }
+    
+      pane split_direction="horizontal" {
+        pane
+        pane split_direction="vertical" {
+            pane
+            pane
+        }
+      }
+    
+      pane size=2 borderless=true {
+        plugin location="zellij:status-bar"
+      }
+    }
+  '';
+
+  # ===== Zsh =====
+  programs.zsh = {
+    enable = true;
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" ];
     };
   };
 }
