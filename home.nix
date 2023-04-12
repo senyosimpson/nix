@@ -54,6 +54,7 @@
     flyctl
     go
     gopls
+    go-tools
   ];
 
   # ===== Gnome Terminal =====
