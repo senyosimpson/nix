@@ -44,7 +44,6 @@
     lsd
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
     oh-my-zsh
-    rustup
     starship
     vim
     vscode
@@ -58,6 +57,14 @@
     gopls
     go-tools
     teleport
+  ] ++ [
+    # bpf-linker
+    # llvmPackages_15.libclang
+    # llvmPackages_15.bintools-unwrapped
+    # lld_15
+    # mold
+    # musl
+    # rustup
   ];
 
   # ===== Gnome Terminal =====
