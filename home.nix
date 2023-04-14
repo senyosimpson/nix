@@ -142,11 +142,11 @@
       }
     
       pane split_direction="horizontal" {
-        pane
         pane split_direction="vertical" {
             pane
             pane
         }
+        pane
       }
     
       pane size=2 borderless=true {
@@ -159,6 +159,9 @@
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
+    initExtra = ''
+      source "$HOME/.cargo/env"
+    '';
     shellAliases = {
       ls = "lsd";
       cat = "bat";
