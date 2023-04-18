@@ -52,7 +52,7 @@
     zoxide
     zsh
   ] ++ [
-    flyctl
+    delve
     go
     gopls
     go-tools
@@ -161,6 +161,9 @@
     enableAutosuggestions = true;
     initExtra = ''
       source "$HOME/.cargo/env"
+      export FLYCTL_INSTALL="/home/senyo/.fly"
+      export PATH="$FLYCTL_INSTALL/bin:$PATH"
+      export NIX_PATH="$NIX_PATH:$HOME.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels";
     '';
     shellAliases = {
       ls = "lsd";
