@@ -34,6 +34,7 @@
     _1password-gui
     atuin
     bat
+    caffeine-ng
     curl
     dconf
     direnv
@@ -49,6 +50,7 @@
     vim
     vscode
     wireguard-tools
+    wl-clipboard
     zellij
     zoxide
     zsh
@@ -133,6 +135,13 @@
   # ===== Zoxide =====
   programs.zoxide = {
     enable = true;
+  };
+
+  programs.zellij = {
+    enable = true;
+    settings = {
+      copy_command = "wl-copy";
+    };
   };
 
   # ===== Zellij =====
