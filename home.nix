@@ -45,10 +45,13 @@
     just
     lsd
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    netcat-gnu
     oh-my-zsh
+    socat
     starship
     vim
     vscode
+    websocat
     wireguard-tools
     wl-clipboard
     zellij
