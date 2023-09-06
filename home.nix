@@ -16,7 +16,7 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "22.11";
+  home.stateVersion = "23.05";
   
   # Allow non-free packages
   nixpkgs.config = {
@@ -31,7 +31,6 @@
   
   # Packages (in alphabetical order)
   home.packages = with pkgs; [
-    _1password-gui
     atuin
     bat
     caffeine-ng
@@ -50,7 +49,6 @@
     socat
     starship
     vim
-    vscode
     websocat
     wireguard-tools
     wl-clipboard
@@ -64,13 +62,8 @@
     go-tools
     teleport
   ] ++ [
-    # bpf-linker
-    # llvmPackages_15.libclang
-    # llvmPackages_15.bintools-unwrapped
-    # lld_15
-    # mold
-    # musl
-    # rustup
+    # vscode
+    # _1password-gui
   ];
 
   # ===== Gnome Terminal =====
@@ -140,6 +133,7 @@
     enable = true;
   };
 
+  # ===== Zellij =====
   programs.zellij = {
     enable = true;
     settings = {
@@ -147,7 +141,6 @@
     };
   };
 
-  # ===== Zellij =====
   home.file."${config.xdg.configHome}/zellij/layouts/default.kdl".text = ''
     layout {
       pane size=1 borderless=true {
@@ -176,7 +169,6 @@
       source "$HOME/.cargo/env"
       export FLYCTL_INSTALL="/home/senyo/.fly"
       export PATH="$FLYCTL_INSTALL/bin:$PATH"
-      export NIX_PATH="$NIX_PATH:$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels";
     '';
     shellAliases = {
       ls = "lsd";
