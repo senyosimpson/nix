@@ -48,6 +48,7 @@
     oh-my-zsh
     socat
     starship
+    unixtools.netstat
     vim
     websocat
     wireguard-tools
@@ -112,6 +113,7 @@
   programs.direnv = {
     enable = true;
     enableZshIntegration = true;
+    nix-direnv.enable = true;
   };
 
   # ===== Atuin =====
