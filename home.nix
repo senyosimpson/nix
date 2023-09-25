@@ -171,6 +171,7 @@
       source "$HOME/.cargo/env"
       export FLYCTL_INSTALL="/home/senyo/.fly"
       export PATH="$FLYCTL_INSTALL/bin:$PATH"
+      export TELEPORT_LOGIN="root"
     '';
     shellAliases = {
       ls = "lsd";
