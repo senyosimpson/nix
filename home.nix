@@ -33,6 +33,7 @@
   home.packages = with pkgs; [
     atuin
     bat
+    broot
     caffeine-ng
     curl
     dconf
@@ -46,6 +47,8 @@
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
     netcat-gnu
     oh-my-zsh
+    openresolv
+    sd
     socat
     starship
     unixtools.netstat
@@ -58,13 +61,11 @@
     zsh
   ] ++ [
     delve
-    go
+    go_1_21
     gopls
     go-tools
-    teleport
-  ] ++ [
-    # vscode
-    # _1password-gui
+    kubectl
+    teleport_12
   ];
 
   # ===== Gnome Terminal =====
