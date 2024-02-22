@@ -170,6 +170,7 @@
     enableAutosuggestions = true;
     initExtra = ''
       source "$HOME/.cargo/env"
+      source /home/senyo/.config/broot/launcher/bash/br
       export FLYCTL_INSTALL="/home/senyo/.fly"
       export PATH="$FLYCTL_INSTALL/bin:$PATH"
       export TELEPORT_LOGIN="root"
@@ -184,4 +185,21 @@
       plugins = [ "git" "sudo" ];
     };
   };
+
+  # ===== Helix =====
+  programs.helix = {
+    enable = true;
+    settings = {
+      theme = "gruvbox";
+      editor = {
+        line-number = "relative";
+        cursor-shape = {
+          insert = "bar";
+          normal = "block";
+          select = "underline";
+        };
+      };
+    };
+  };
 }
+
