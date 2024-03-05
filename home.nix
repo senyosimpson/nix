@@ -198,6 +198,10 @@
           normal = "block";
           select = "underline";
         };
+        lsp = {
+          enable = true;
+          display-inlay-hints = true;
+        }; 
       };
     };
   };
