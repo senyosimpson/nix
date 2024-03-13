@@ -61,7 +61,7 @@
     zsh
   ] ++ [
     delve
-    go_1_21
+    go_1_22
     gopls
     go-tools
     kubectl
