@@ -60,12 +60,13 @@
     zoxide
     zsh
   ] ++ [
-    delve
-    go_1_22
-    gopls
-    go-tools
+    # delve
+    # go_1_22
+    # gopls
+    # go-tools
     kubectl
-    teleport_12
+    teleport_14
+    kubernetes-helm
   ];
 
   # ===== Gnome Terminal =====
@@ -167,18 +168,20 @@
   # ===== Zsh =====
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
     initExtra = ''
       source "$HOME/.cargo/env"
       source /home/senyo/.config/broot/launcher/bash/br
       export FLYCTL_INSTALL="/home/senyo/.fly"
-      export PATH="$FLYCTL_INSTALL/bin:$PATH"
+      export PATH="$FLYCTL_INSTALL/bin:/usr/local/go/bin:/home/senyo/go/bin:$PATH"
       export TELEPORT_LOGIN="root"
     '';
     shellAliases = {
       ls = "lsd";
       cat = "bat";
       zj = "zellij";
+    };
+    autosuggestion = {
+      enable = true;
     };
     oh-my-zsh = {
       enable = true;
