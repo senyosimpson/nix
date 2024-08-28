@@ -40,7 +40,7 @@
     direnv
     dogdns
     git
-    gnome.gnome-tweaks
+    gnome-tweaks
     helix
     just
     lsd
@@ -48,6 +48,7 @@
     netcat-gnu
     oh-my-zsh
     openresolv
+    ripgrep
     sd
     socat
     starship
@@ -65,7 +66,9 @@
     # gopls
     # go-tools
     kubectl
+    k9s
     teleport_14
+    # sqlite
     kubernetes-helm
   ];
 
@@ -174,11 +177,14 @@
       export FLYCTL_INSTALL="/home/senyo/.fly"
       export PATH="$FLYCTL_INSTALL/bin:/usr/local/go/bin:/home/senyo/go/bin:$PATH"
       export TELEPORT_LOGIN="root"
+      export PATH=$PATH:$HOME/.local/bin:
+      export KUBE_EDITOR=hx
     '';
     shellAliases = {
       ls = "lsd";
       cat = "bat";
       zj = "zellij";
+      zed = "~/.local/bin/zed";
     };
     autosuggestion = {
       enable = true;
@@ -193,7 +199,7 @@
   programs.helix = {
     enable = true;
     settings = {
-      theme = "gruvbox";
+      theme = "gruvbox-tp";
       editor = {
         line-number = "relative";
         cursor-shape = {
@@ -205,6 +211,12 @@
           enable = true;
           display-inlay-hints = true;
         }; 
+      };
+    };
+    themes = {
+      gruvbox-tp = {
+      "inherits" = "gruvbox";
+      "ui.background" = { };
       };
     };
   };
