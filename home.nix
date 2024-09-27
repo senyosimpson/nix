@@ -57,6 +57,7 @@
     websocat
     wireguard-tools
     wl-clipboard
+    yazi
     zellij
     zoxide
     zsh
@@ -179,6 +180,7 @@
       export TELEPORT_LOGIN="root"
       export PATH=$PATH:$HOME/.local/bin:
       export KUBE_EDITOR=hx
+      export EDITOR=hx
     '';
     shellAliases = {
       ls = "lsd";
@@ -210,7 +212,14 @@
         lsp = {
           enable = true;
           display-inlay-hints = true;
-        }; 
+        };
+      };
+      keys.normal = {
+        C-x = ":sh zellij run -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh";
+        space = {
+          f = "file_picker_in_current_directory";
+          F = "file_picker";
+        };
       };
     };
     themes = {
@@ -220,5 +229,18 @@
       };
     };
   };
+
+  home.file."${config.xdg.configHome}/helix/yazi-picker.sh".text = ''
+    #!/usr/bin/env bash
+    paths=$(yazi --chooser-file=/dev/stdout | while read -r; do printf "%q " "$REPLY"; done)
+    if [[ -n "$paths" ]]; then
+    	zellij action toggle-floating-panes
+    	zellij action write 27 # send <Escape> key
+    	zellij action write-chars ":open $paths"
+    	zellij action write 13 # send <Enter> key
+    	zellij action toggle-floating-panes
+    fi
+    zellij action close-pane
+  '';
 }
 
