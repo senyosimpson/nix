@@ -232,11 +232,15 @@
       };
     };
     languages = {
-      language.typescript = {
-        formatter = {
-          command = "npx prettier . --write";
-        };
-      };
+      language = [
+        {
+          name = "typescript";
+          auto-format = true;
+          formatter = {
+            command = "prettier . --write";
+          };
+        }
+      ];
       language-server.rust-analyzer = {
         config = {
           check = {
