@@ -6,8 +6,8 @@
   
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "senyo";
-  home.homeDirectory = "/home/senyo";
+  home.username = "senyeezus";
+  home.homeDirectory = "/home/senyeezus";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -16,7 +16,14 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "23.05";
+  home.stateVersion = "24.05";
+
+  # manage environment variables in home-manager managed shell
+  home.sessionVariables = {
+    EDITOR = "hx";
+    FLYCTL_INSTALL = "/home/senyeezus/.fly";
+    PATH = "$FLYCTL_INSTALL/bin:/usr/local/go/bin:/home/senyeezus/go/bin:$PATH";
+  };
   
   # Allow non-free packages
   nixpkgs.config = {
@@ -33,19 +40,19 @@
   home.packages = with pkgs; [
     atuin
     bat
-    broot
     caffeine-ng
     curl
     dconf
     direnv
     dogdns
     git
-    gnome.gnome-tweaks
+    gnome-tweaks
     helix
     just
     lsd
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
     netcat-gnu
+    nodejs_22
     oh-my-zsh
     openresolv
     sd
@@ -56,6 +63,7 @@
     websocat
     wireguard-tools
     wl-clipboard
+    yazi
     zellij
     zoxide
     zsh
@@ -65,8 +73,12 @@
     # gopls
     # go-tools
     kubectl
+    k9s
     teleport_14
     kubernetes-helm
+  ] ++ [
+    nodePackages.typescript-language-server
+    nodePackages.prettier
   ];
 
   # ===== Gnome Terminal =====
@@ -170,15 +182,12 @@
     enable = true;
     initExtra = ''
       source "$HOME/.cargo/env"
-      source /home/senyo/.config/broot/launcher/bash/br
-      export FLYCTL_INSTALL="/home/senyo/.fly"
-      export PATH="$FLYCTL_INSTALL/bin:/usr/local/go/bin:/home/senyo/go/bin:$PATH"
-      export TELEPORT_LOGIN="root"
     '';
     shellAliases = {
       ls = "lsd";
       cat = "bat";
       zj = "zellij";
+      dig = "dog";
     };
     autosuggestion = {
       enable = true;
@@ -193,8 +202,10 @@
   programs.helix = {
     enable = true;
     settings = {
-      theme = "gruvbox";
+      theme = "gruvbox-tp";
       editor = {
+        true-color = true;
+        bufferline = "always";
         line-number = "relative";
         cursor-shape = {
           insert = "bar";
@@ -206,7 +217,47 @@
           display-inlay-hints = true;
         }; 
       };
+      keys.normal = {
+        C-x = ":sh zellij run -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh";
+        space = {
+          f = "file_picker_in_current_directory";
+          F = "file_picker";
+        };
+      };
+    };
+    themes = {
+      gruvbox-tp = {
+        "inherits" = "gruvbox";
+        "ui.background" = { };
+      };
+    };
+    languages = {
+      language.typescript = {
+        formatter = {
+          command = "npx prettier . --write";
+        };
+      };
+      language-server.rust-analyzer = {
+        config = {
+          check = {
+            command = "clippy ";
+          };
+        };
+      };
     };
   };
+
+  home.file."${config.xdg.configHome}/helix/yazi-picker.sh".text = ''
+    #!/usr/bin/env bash
+    paths=$(yazi --chooser-file=/dev/stdout | while read -r; do printf "%q " "$REPLY"; done)
+    if [[ -n "$paths" ]]; then
+    	zellij action toggle-floating-panes
+    	zellij action write 27 # send <Escape> key
+    	zellij action write-chars ":open $paths"
+    	zellij action write 13 # send <Enter> key
+    	zellij action toggle-floating-panes
+    fi
+    zellij action close-pane
+  '';
 }
 
