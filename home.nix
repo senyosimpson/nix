@@ -184,7 +184,7 @@
       source "$HOME/.cargo/env"
     '';
     shellAliases = {
-      ls = "lsd";
+      ls = "lsd --group-dirs=first";
       cat = "bat";
       zj = "zellij";
       dig = "dog";
