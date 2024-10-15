@@ -268,5 +268,9 @@
     .headers on
     .mode columns
   '';
+
+  home.file.".curlrc".text = ''
+    -w "\n"
+  '';
 }
 
