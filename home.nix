@@ -263,5 +263,10 @@
     fi
     zellij action close-pane
   '';
+
+  home.file.".sqliterc".text = ''
+    .headers on
+    .mode columns
+  '';
 }
 
