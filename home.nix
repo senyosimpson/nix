@@ -31,6 +31,7 @@
   
   # Packages (in alphabetical order)
   home.packages = with pkgs; [
+    # general packages for use with system
     atuin
     bat
     broot
@@ -39,12 +40,13 @@
     dconf
     direnv
     dogdns
+    ghostty
     git
     gnome-tweaks
     helix
     just
     lsd
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    nerd-fonts.fira-code
     netcat-gnu
     oh-my-zsh
     openresolv
@@ -62,15 +64,20 @@
     zoxide
     zsh
   ] ++ [
+    # go tooling
     # delve
     # go_1_22
     # gopls
     # go-tools
+  ] ++ [
+    # kubernetes
     kubectl
     k9s
-    teleport_14
-    # sqlite
+    teleport_15
     kubernetes-helm
+  ] ++ [
+    # zig tooling
+    zig
   ];
 
   # ===== Gnome Terminal =====
@@ -183,10 +190,11 @@
       export EDITOR=hx
     '';
     shellAliases = {
-      ls = "lsd";
+      ls = "lsd --group-dirs=first";
       cat = "bat";
       zj = "zellij";
       zed = "~/.local/bin/zed";
+      dig = "dog";
     };
     autosuggestion = {
       enable = true;
@@ -204,6 +212,7 @@
       theme = "gruvbox-tp";
       editor = {
         line-number = "relative";
+        bufferline = "always";
         cursor-shape = {
           insert = "bar";
           normal = "block";
